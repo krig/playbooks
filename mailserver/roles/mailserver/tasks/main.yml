@@ -33,6 +33,17 @@
 - name: install postfix main.cf
   template: src=main.cf.j2 dest=/etc/postfix/main.cf
 
+- name: install postfix vhosts.map
+  template: src=vhosts.map.j2 dest=/etc/postfix/vhosts.map
+
+- name: install postfix vmailboxes.map
+  template: src=vmailboxes.map.j2 dest=/etc/postfix/vmailboxes.map
+  notify: rehash vmailboxes.map
+
+- name: install postfix valias.map
+  template: src=valias.map.j2 dest=/etc/postfix/valias.map
+  notify: rehash valias.map
+
 # configure dovecot
 # configure fetchmail
 
