@@ -1,0 +1,39 @@
+---
+# Set up a mail server
+
+# goal:
+# - secure imap mail server
+# - stores mail in maildir format
+# - can POP mail from other accounts
+# - can backup popped mail to other locations
+# - installed on a VPS
+# - mails are backuped to many locations (google drive?, copy.com?)
+
+
+- name: install packages
+  apt: name={{item}} state=present
+  with_items:
+    - dovecot-core
+    - dovecot-imapd
+    - dovecot-lmtpd
+    - dovecot-sieve
+    - dovecot-managesieved
+    - sasl2-bin
+    - postfix
+    - fetchmail
+    - procmail
+
+- name: create virtual mail group
+  group: name=vmail gid=5000 state=present
+
+- name: create virtual mail user
+  user: name=vmail group=vmail uid=5000 home=/mail createhome=yes
+
+# configure postfix
+- name: install postfix main.cf
+  template: src=main.cf.j2 dest=/etc/postfix/main.cf
+
+# configure dovecot
+# configure fetchmail
+
+
