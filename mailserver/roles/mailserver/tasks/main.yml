@@ -40,7 +40,7 @@
 
 # configure fetchmail
 - name: install fetchmailrc
-  copy: src=fetchmailrc dest=/etc/fetchmailrc owner=root group=root mode=600
+  template: src=fetchmailrc.j2 dest=/etc/fetchmailrc owner=root group=root mode=600
 
 # configure dovecot
 - name: install dovecot.conf
