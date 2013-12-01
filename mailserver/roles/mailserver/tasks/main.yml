@@ -18,6 +18,7 @@
     - dovecot-lmtpd
     - dovecot-sieve
     - dovecot-managesieved
+    - libsasl2-modules
     - sasl2-bin
     - postfix
     - fetchmail
@@ -26,15 +27,16 @@
 
 # configure postfix
 - name: install postfix main.cf
-  template: src=main.cf.j2 dest=/etc/postfix/main.cf
+  template: src=main.cf.j2 dest=/etc/postfix/main.cf owner=root group=root
+  notify: restart postfix
 
 # configure procmail
 - name: install procmailrc
-  copy: src=procmailrc dest=/etc/procmailrc owner=root
+  copy: src=procmailrc dest=/etc/procmailrc owner=root group=root
 
 # configure fetchmail
 - name: install fetchmailrc
-  copy: src=fetchmailrc dest=/etc/fetchmailrc owner=root mode=600
+  copy: src=fetchmailrc dest=/etc/fetchmailrc owner=root group=root mode=600
 
 # configure dovecot
 
