@@ -2,6 +2,15 @@
 # variables listed here are applicable to all host groups
 
 mail_hostname: mailbox.mshome.net
+mail_domain: mailbox.mshome.net
 mail_hosts:
   - mailbox.mshome.net
+
+fetch_accounts:
+  - name: gmail
+    server: <server>
+    proto: POP3
+    username: <username>
+    password: <password>
+    localuser: <localuser>
 
