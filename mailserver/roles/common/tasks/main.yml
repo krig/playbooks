@@ -26,7 +26,7 @@
   notify: restart ntp
 
 - name: Start ntp
-  service: name=ntpd state=started enabled=true
+  service: name=ntp state=started enabled=true
   tags: ntp
 
 - name: Install vim configuration
