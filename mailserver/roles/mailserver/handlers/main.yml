@@ -1,0 +1,9 @@
+---
+# handlers for mailserver installation
+
+- name: rehash vmailboxes.map
+  command: postmap /etc/postfix/vmailboxes.map
+
+- name: rehash valias.map
+  command: postmap /etc/postfix/valias.map
+
