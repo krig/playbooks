@@ -60,6 +60,10 @@ broken_sasl_auth_clients = yes
 smtpd_sasl_security_options = noanonymous, noplaintext
 smtpd_sasl_tls_security_options = noanonymous
 
+#smtp_sender_dependent_authentication = yes
+#sender_dependent_relayhost_maps = hash:/etc/postfix/sender_relay
+
+
 # See /usr/share/doc/postfix/TLS_README.gz in the postfix-doc package for
 # information on enabling SSL in the smtp client.
 
