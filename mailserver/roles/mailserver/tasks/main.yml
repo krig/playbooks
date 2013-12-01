@@ -30,6 +30,10 @@
   template: src=main.cf.j2 dest=/etc/postfix/main.cf owner=root group=root
   notify: restart postfix
 
+- name: install postfix master.cf
+  copy: src=master.cf dest=/etc/postfix/master.cf owner=root group=root
+  notify: restart postfix
+
 # configure procmail
 - name: install procmailrc
   copy: src=procmailrc dest=/etc/procmailrc owner=root group=root
@@ -39,6 +43,21 @@
   copy: src=fetchmailrc dest=/etc/fetchmailrc owner=root group=root mode=600
 
 # configure dovecot
+- name: install dovecot.conf
+  copy: src=dovecot.conf dest=/etc/dovecot/dovecot.conf
 
+- name: install dovecot configuration files
+  copy: src={{item}} dest=/etc/dovecot/conf.d/{{item}}
+  with_items:
+    - 10-mail.conf
+    - 10-auth.conf
+    - 10-master.conf
+    - 10-ssl.conf
+    - 20-imap.conf
+    - 20-lmtp.conf
+  notify: restart dovecot
 
+- name: install dovecot lda configuration
+  template: src=15-lda.conf.j2 dest=/etc/dovecot/conf.d/15-lda.conf
+  notify: restart dovecot
 
