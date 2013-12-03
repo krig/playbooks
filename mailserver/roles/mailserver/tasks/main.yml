@@ -39,8 +39,8 @@
   copy: src=procmailrc dest=/etc/procmailrc owner=root group=root
 
 # configure fetchmail
-- name: install fetchmailrc
-  template: src=fetchmailrc.j2 dest=/etc/fetchmailrc owner=root group=root mode=600
+#- name: install fetchmailrc
+#  template: src=fetchmailrc.j2 dest=/etc/fetchmailrc owner=root group=root mode=600
 
 # configure dovecot
 - name: install dovecot.conf
