@@ -55,6 +55,7 @@
     - 10-ssl.conf
     - 20-imap.conf
     - 20-lmtp.conf
+    - 90-sieve.conf
   notify: restart dovecot
 
 - name: install dovecot lda configuration
