@@ -26,8 +26,8 @@ message_size_limit = 51200000
 
 inet_interfaces = all
 
-#mailbox_command = /usr/lib/dovecot/dovecot-lda -f "$SENDER" -a "$RECIPIENT"
-mailbox_transport = lmtp:unix:private/dovecot-lmtp
+mailbox_command = /usr/lib/dovecot/dovecot-lda -d "$USER" -f "$SENDER" -a "$RECIPIENT"
+#mailbox_transport = lmtp:unix:private/dovecot-lmtp
 
 # TLS
 smtpd_tls_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
